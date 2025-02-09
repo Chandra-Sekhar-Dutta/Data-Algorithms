@@ -1,0 +1,32 @@
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    vector<int> V{-1, 1, -6, 4, 5, -6, 1, 4, 1};
+
+    map<int, int> M;
+
+    for (int i = 0; i < V.size(); i++)
+    {
+        M[V[i]]++;
+    }
+
+    sort(V.begin(), V.end(),[&M](int a,int b){
+        if(M[a]==M[b]){
+            return a>b;
+        }
+        return M[a]<M[b];
+    });
+
+    for(auto i:V){
+        cout<<i<<"\t";
+    }
+    cout<<"\n";
+
+    return 0;
+}
